@@ -13,6 +13,9 @@ function MainNavigation() {
           <li>
             <Link to="/events">Events</Link>
           </li>
+          <li>
+            <Link to="/events/new">New Event</Link>
+          </li>
         </ul>
       </nav>
     </header>
