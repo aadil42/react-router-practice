@@ -18,6 +18,8 @@ const Events = () => {
                     </li>;
                 })}
             </ul>
+            <br></br>
+            <Link to='new'> add new Event</Link>
         </>
     );
 }
