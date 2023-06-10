@@ -11,7 +11,10 @@ const Events = () => {
             <h1>Events page</h1>
             <ul>
                 {data.map((d) => {
-                    return <li><Link to={`/events-detail/${d.id}`}> {d.title} </Link></li>;
+                    return <li>
+                        <Link to={`/events-detail/${d.id}`}> {d.title} </Link>
+                        <Link to={`/events-edit/${d.id}`}> Edit this event</Link>
+                    </li>;
                 })}
             </ul>
         </>

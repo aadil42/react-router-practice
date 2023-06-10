@@ -38,7 +38,7 @@ const route = createBrowserRouter([
     {path: '/events', element: <Events/>},
     {path: '/events-detail/:eventId', element: <EventDetail />},
     {path: '/events/new', element: <NewEvent />},
-    {path: '/events/:eventId', element: <EditEvent />}
+    {path: '/events-edit/:eventId', element: <EditEvent />}
     ]
   }
 ]);
