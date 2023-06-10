@@ -7,5 +7,7 @@ const Root = () => {
             <MainNavigation />
             <Outlet />
         </main>
-    )
+    );
 }
+
+export default Root;
