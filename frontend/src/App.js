@@ -26,7 +26,7 @@ import Root from './pages/Root';
 import EventRoot from "./pages/EventRoot";
 import EventsNavigation from "./components/EventsNavigation";
 import Home from './pages/Home';
-import Events from './pages/Events';
+import Events, {loader as eventsLoader} from './pages/Events';
 import EventDetail from './pages/EventDetail';
 import NewEvent from './pages/NewEvent';
 import EditEvent from './pages/EditEvent';
@@ -42,15 +42,7 @@ const route = createBrowserRouter([
         children: [
         {index: true, 
          element: <Events/>,
-         loader: async () => {
-          const response = await fetch('http://localhost:8080/events');
-          if (!response.ok) {
-            // setError('Fetching events failed.');
-          } else {
-            const resData = await response.json();
-            return resData.events;
-          }
-         }
+         loader: eventsLoader
         },
         {path: ':eventId', element: <EventDetail />},
         {path: 'new', element: <NewEvent />},
