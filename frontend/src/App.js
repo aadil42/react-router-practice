@@ -36,7 +36,7 @@ const route = createBrowserRouter([
   {
     path: '/', 
     element: <Root />, 
-    // errorElement: <Error msg='an error occured in root'/>,
+    errorElement: <Error />,
     children : [  
       {index: true, element: <Home />},
       { path: 'events', 
@@ -45,7 +45,6 @@ const route = createBrowserRouter([
         {index: true, 
          element: <Events/>,
          loader: eventsLoader,
-         errorElement: <Error msg="an error occured in events" />
         },
         {path: ':eventId', element: <EventDetail />},
         {path: 'new', element: <NewEvent />},
