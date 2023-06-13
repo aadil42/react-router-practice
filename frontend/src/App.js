@@ -27,6 +27,7 @@ import EventRoot from "./pages/EventRoot";
 import EventsNavigation from "./components/EventsNavigation";
 import Home from './pages/Home';
 import Events, {loader as eventsLoader} from './pages/Events';
+import {loader as eventDetailLoader} from './pages/EventDetail';
 import EventDetail from './pages/EventDetail';
 import NewEvent from './pages/NewEvent';
 import EditEvent from './pages/EditEvent';
@@ -46,7 +47,10 @@ const route = createBrowserRouter([
          element: <Events/>,
          loader: eventsLoader,
         },
-        {path: ':eventId', element: <EventDetail />},
+      { path: ':eventId', 
+        element: <EventDetail />,
+        loader: eventDetailLoader
+      },
         {path: 'new', element: <NewEvent />},
         {path: ':eventId/edit', element: <EditEvent />}
       ]
