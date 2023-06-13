@@ -30,11 +30,13 @@ import Events, {loader as eventsLoader} from './pages/Events';
 import EventDetail from './pages/EventDetail';
 import NewEvent from './pages/NewEvent';
 import EditEvent from './pages/EditEvent';
+import Error from './pages/Error';
 
 const route = createBrowserRouter([
   {
     path: '/', 
     element: <Root />, 
+    // errorElement: <Error msg='an error occured in root'/>,
     children : [  
       {index: true, element: <Home />},
       { path: 'events', 
@@ -42,7 +44,8 @@ const route = createBrowserRouter([
         children: [
         {index: true, 
          element: <Events/>,
-         loader: eventsLoader
+         loader: eventsLoader,
+         errorElement: <Error msg="an error occured in events" />
         },
         {path: ':eventId', element: <EventDetail />},
         {path: 'new', element: <NewEvent />},

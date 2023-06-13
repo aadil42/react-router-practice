@@ -18,10 +18,11 @@ function Events() {
 export default Events;
 
 export const loader = async () => {
-  const response = await fetch('http://localhost:8080/events');
+  const response = await fetch('http://localhost:8080/eventsfd');
   if (!response.ok) {
     // setError('Fetching events failed.');
-    return {error:  true, message: 'couldn\'t fetch the data'}
+    // return {error:  true, message: 'couldn\'t fetch the data'}
+    throw { }
   } else {
     // const resData = await response.json();
     return response;
