@@ -9,7 +9,7 @@ const Error = (props) => {
     let message = "Something went wrong";
 
     if(error.status === 500) {
-        message = JSON.parse(error.data).message;
+        message = error.data.message;
     }
 
     if(error.status === 404) { // if you don't have any status status will have 404 by default.
