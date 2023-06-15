@@ -30,8 +30,9 @@ import Events, {loader as eventsLoader} from './pages/Events';
 // import {loader as eventDetailLoader} from './pages/EventDetail';
 // import {action as newEventAction} from './pages/NewEvent';
 import EventDetail, {action as eventDetailAction, loader as eventDetailLoader} from './pages/EventDetail';
-import NewEvent, {action as newEventAction} from './pages/NewEvent';
+import NewEvent from './pages/NewEvent';
 import EditEvent from './pages/EditEvent';
+import {action as manupilateAction} from './components/EventForm';
 import Error from './pages/Error';
 
 const route = createBrowserRouter([
@@ -57,13 +58,17 @@ const route = createBrowserRouter([
              element:  <EventDetail />,
              action: eventDetailAction
             },
-            {path: 'edit', element: <EditEvent />}
+            {
+             path: 'edit', 
+             element: <EditEvent />,
+             action: manupilateAction
+            }
           ]
         },
         {
           path: 'new', 
           element: <NewEvent />, 
-          action: newEventAction
+          action: manupilateAction
         }
       ]
     }
