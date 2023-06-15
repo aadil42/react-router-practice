@@ -34,6 +34,7 @@ import NewEvent from './pages/NewEvent';
 import EditEvent from './pages/EditEvent';
 import NewsLetter from './pages/NewsLetter';
 import {action as manupilateAction} from './components/EventForm';
+import {action as newsLetterAction} from './pages/NewsLetter';
 import Error from './pages/Error';
 
 const route = createBrowserRouter([
@@ -75,7 +76,8 @@ const route = createBrowserRouter([
     },
     {
       path: 'newsletter',
-      element: <NewsLetter />
+      element: <NewsLetter />,
+      action: newsLetterAction
     }
     ]
   }
