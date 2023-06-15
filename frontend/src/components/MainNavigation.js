@@ -16,11 +16,11 @@ function MainNavigation() {
           <li>
             <NavLink className={({isActive}) => {
              return isActive ? classes.active : undefined;
-            }} to="/events">Events</NavLink>
+            }} to="events">Events</NavLink>
           </li>
           <li>
           <NavLink
-              to="/newsletter"
+              to="newsletter"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
