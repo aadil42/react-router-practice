@@ -11,13 +11,14 @@ import EventsList  from '../components/EventsList';
 const EventDetail = () => {
     // const id = useParams();
     const {event, events} = useRouteLoaderData('event-detail'); // this is the function that is getting the data.
-    // const {event, events} = useLoaderData();
 
     return (
         <>
         <Suspense fallback={<p style={{textAlign: 'center'}}>Loading...</p>}>
             <Await resolve={event}>
-                {(singleEvent) => <EventItem event={singleEvent} />}
+                {(singleEvent) => {
+                    return <EventItem event={singleEvent} />
+                } }
             </Await>
         </Suspense>
         <Suspense fallback={<p style={{textAlign: 'center'}}>Loading...</p>}>
@@ -31,12 +32,8 @@ const EventDetail = () => {
 
 export default EventDetail;
 
-const getEvents = async (id) => {
-    let URL = 'http://localhost:8080/events';
-    if(id) {
-        URL = `URL/${id}`;
-    } 
-    const response = await fetch(URL);
+const getEvent = async (id) => { 
+    const response = await fetch('http://localhost:8080/events/' + id);
 
     if (!response.ok) {
       // setError('Fetching events failed.');
@@ -49,16 +46,35 @@ const getEvents = async (id) => {
       });
     } else {
       const resData = await response.json();
-      return resData;
+      return resData.event;
     }
 }
 
-export const loader = ({request, params}) => {
+const getEvents = async () => {
+
+    const response = await fetch('http://localhost:8080/events');
+
+    if (!response.ok) {
+      // setError('Fetching events failed.');
+      // return {error:  true, message: 'couldn\'t fetch the data'}
+      // throw new Response(JSON.stringify({message: 'could not fetch events'}), {
+      //   status: 500
+      // });
+      throw json({message: 'could not fetch events'}, {
+        status: 500
+      });
+    } else {
+      const resData = await response.json();
+      return resData.events;
+    }
+}
+
+export const loader = async ({request, params}) => {
     const id = params.eventId;
 
     return defer({
-        event: getEvents(id).event,
-        events: getEvents().events
+        event: await getEvent(id),
+        events: getEvents()
     });
 } 
 
