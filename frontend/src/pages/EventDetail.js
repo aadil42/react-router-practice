@@ -20,11 +20,11 @@ const EventDetail = () => {
                 {(singleEvent) => <EventItem event={singleEvent} />}
             </Await>
         </Suspense>
-        {/* <Suspense fallback={<p style={{textAlign: 'center'}}>Loading...</p>}>
+        <Suspense fallback={<p style={{textAlign: 'center'}}>Loading...</p>}>
             <Await resolve={events}>
                 {(eventsList) => <EventsList events={eventsList} />}
             </Await>
-        </Suspense> */}
+        </Suspense>
         </>
     );
 }
@@ -49,22 +49,16 @@ const getEvents = async (id) => {
       });
     } else {
       const resData = await response.json();
-      return resData.events;
+      return resData;
     }
 }
 
 export const loader = ({request, params}) => {
     const id = params.eventId;
-    console.log(getEvents(id), 'event');
-    console.log(getEvents(), 'events');
-    // return defer({
-        // event: getEvents(id),
-        // events: getEvents()
-    // });
 
     return defer({
-        event:  [],
-        events: []
+        event: getEvents(id).event,
+        events: getEvents().events
     });
 } 
 
